@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="A2-VLA: Ambiguity-Awareness for Vision-Language-Action Policies">
+  <meta name="keywords" content="Joint Language-and-Vision Ambiguity Awareness, Robot Object Manipulation, Bimanipulation Tasks, Vision-Language-Action Models">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A²-VLA: Ambiguity-Awareness for Vision-Language-Action Policies</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+
+  <meta property="og:site_name" content="A2-VLA" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="A²-VLA: Ambiguity-Awareness for Vision-Language-Action Policies" />
+  <meta property="og:description" content="Anonymous Research Submission" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="A²-VLA: Ambiguity-Awareness for Vision-Language-Action Policies" />
+  <meta name="twitter:description" content="Anonymous Research Submission" />
+</head>
+
+
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-four-fifths has-text-centered">
+          <h1 class="title is-1 publication-title">A<sup>2</sup>-VLA: Ambiguity-Awareness for Vision-Language-Action Policies</h1>
+          <div class="is-size-3 publication-authors">
+            Anonymous Authors
+          </div>
+
+          <div class="publication-links" style="margin-top: 20px;">
+            <div class="columns is-mobile is-centered">
+              <div class="column has-text-centered">
+                <a href="./resources/A2-VLA_Supplementary_Material.pdf" target="_blank"
+                   class="button is-dark is-rounded"
+                   style="background-color: #363636; border: none; padding: 8px 16px; margin: 4px;">
+                  <span class="icon is-small">
+                    <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Supplementary Materials</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- Links removed for anonymous submission -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background-color: #f8f9fa; padding: 40px 1.5rem;">
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds">
+        <h2 class="title is-2">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Vision-Language-Action (VLA) policies allow for robot manipulation using natural-language instructions and visual observations. However, ambiguous instructions may not provide the needed task information, making multiple objects plausible as manipulation targets. In this paper, we introduce Ambiguity-Aware Vision-Language-Action (A<sup>2</sup>-VLA), a zero-shot architecture for ambiguity-aware robot manipulation using frozen VLA policies. A<sup>2</sup>-VLA is the first architecture to jointly address ambiguity in both the natural-language instruction and visual observation. The intended manipulation task and corresponding target object are first inferred and verified using a Vision-Language-Model (VLM) scene understanding and open-vocabulary object detection. Visually competing object regions are then inpainted with local background estimates to provide a target-conditioned visual observation. For ambiguous multi-object instructions, sequential object-level subtasks are separated by detecting completion of the current subtask and re-evaluating the updated scene before selecting the next target object. Unlike the majority of existing frameworks, A<sup>2</sup>-VLA does not require task-specific VLA fine-tuning or additional user clarifications. Extensive experiments in simulated and real-world bimanual robot-manipulation environments validate the higher Success Rates and Normalized Task Scores of A<sup>2</sup>-VLA compared to other state-of-the-art methods for a range of manipulation tasks. An ablation study confirms the contributions of the main A<sup>2</sup>-VLA architecture components.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-full-width is-centered has-text-centered">
+        <h2 class="title is-2" style="text-align: center;">Experiment Video</h2>
+        <video controls controlsList="nodownload" autoplay loop muted playsinline src="./resources/A2-VLA_Video.mp4" poster="./static/images/video_poster.jpg" style="width: 100%; max-width: 1100px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" oncontextmenu="return false;"></video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <!-- Architecture Title and Description -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-2">A<sup>2</sup>-VLA Architecture</h2>
+        <div class="content has-text-justified">
+          <p>
+            The proposed A<sup>2</sup>-VLA architecture consists of two main components, Fig. 1: 1) an Ambiguity-Aware Planner (AAP), which jointly addresses ambiguity in natural-language instructions and visual observations, and 2) a Frozen VLA Policy, which generates robot manipulation actions from the resulting explicit instruction and target-conditioned observation. The AAP consists of three modules: 1) the Ambiguity Interpretation Module (AIM), 2) the Visual Distractor Inpainting Module (VDIM), and 3) the Subtask Isolation Module (SIM). A naturalistic user instruction and initial robot observation are provided to the AIM, where the VLM-based instruction-interpretation submodule infers the task and candidate target, the dual-model target-verification submodule verifies it, and the distractor-aware instruction-augmentation submodule produces the instruction for the Frozen VLA Policy. The VDIM then inpaints visually confusable distractors in the robot observation before policy inference. For multi-object tasks, the SIM detects completed subtasks, returns the robot manipulator to its initial configuration, and processes the next subtask using the updated scene. The frozen VLA policy receives the modified language instruction and modified observation and outputs the robot actions without any parameter updates.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- Architecture Image -->
+    <div class="columns is-centered">
+      <div class="column is-full-width is-centered has-text-centered">
+        <img src="./static/images/architecture.png" alt="A2-VLA Architecture Diagram" style="width: 100%; max-width: 1100px; margin: 20px auto; display: block;">
+        <p style="margin-top: 11px; color: #666;">Fig 1. A<sup>2</sup>-VLA Architecture</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>Page template from <a href="https://robot-parkour.github.io/"><span class="dnerf">Robot Parkour Learning</span></a></p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
